@@ -1,0 +1,13 @@
+.env
+venv
+__pycache__
+*.pyc
+*.pyo
+*.log
+*.swp
+*.swo
+*.db
+*.sqlite3
+*.sqlite
+*.db-journal
+test_server.py

@@ -15,6 +15,7 @@ from typing import Type
 from bs4 import BeautifulSoup
 import requests
 import json
+import streamlit as st
 from langchain.schema import SystemMessage
 from fastapi import FastAPI
 
@@ -23,8 +24,6 @@ brwoserless_api_key = os.getenv("BROWSERLESS_API_KEY")
 serper_api_key = os.getenv("SERP_API_KEY")
 
 # 1. Tool for search
-
-
 def search(query):
     url = "https://google.serper.dev/search"
 
@@ -172,35 +171,35 @@ agent = initialize_agent(
 
 
 # 4. Use streamlit to create a web app
-# def main():
-#     st.set_page_config(page_title="AI research agent", page_icon=":bird:")
+def main():
+    st.set_page_config(page_title="AI research agent", page_icon=":bird:")
 
-#     st.header("AI research agent :bird:")
-#     query = st.text_input("Research goal")
+    st.header("AI research agent :bird:")
+    query = st.text_input("Research goal")
 
-#     if query:
-#         st.write("Doing research for ", query)
+    if query:
+        st.write("Doing research for ", query)
 
-#         result = agent({"input": query})
+        result = agent({"input": query})
 
-#         st.info(result['output'])
-
-
-# if __name__ == '__main__':
-#     main()
+        st.info(result['output'])
 
 
-# 5. Set this as an API endpoint via FastAPI
-app = FastAPI()
+if __name__ == '__main__':
+    main()
 
 
-class Query(BaseModel):
-    query: str
+# # 5. Set this as an API endpoint via FastAPI
+# app = FastAPI()
 
 
-@app.post("/")
-def researchAgent(query: Query):
-    query = query.query
-    content = agent({"input": query})
-    actual_content = content['output']
-    return actual_content
+# class Query(BaseModel):
+#     query: str
+
+
+# @app.post("/")
+# def researchAgent(query: Query):
+#     query = query.query
+#     content = agent({"input": query})
+#     actual_content = content['output']
+#     return actual_content

@@ -15,8 +15,8 @@ Leverage the power of OpenAI's GPT-3.5, Browserless, Beautiful Soup 4, Serper AP
 
 1. **Clone the Repository**:
 ```bash
-git clone https://github.com/timbeaulac/ai-researcher.git
-cd ai-researcher
+git clone https://github.com/timbeaulac/research-assistant.git
+cd research-assistant
 ```
 
 2. **Create a Python Virtual Environment** (recommended):
